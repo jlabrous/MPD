@@ -27,6 +27,9 @@ const struct tag_table upnp_tags[] = {
 	{ "upnp:originalTrackNumber", TAG_TRACK },
 	{ "upnp:genre", TAG_GENRE },
 	{ "dc:title", TAG_TITLE },
+        { "upnp:albumArtURI", TAG_ALBUM_ART },
+        { "dc:description", TAG_COMMENT },
+        { "upnp:longDescription", TAG_COMMENT },
 
 	/* sentinel */
 	{ nullptr, TAG_NUM_OF_ITEM_TYPES }
