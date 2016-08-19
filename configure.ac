@@ -718,6 +718,14 @@ if test x$enable_cdio_paranoia = xyes; then
 	AC_CHECK_HEADERS(cdio/paranoia/paranoia.h)
 fi
 
+dnl ---------------------------------- cddb ---------------------------------
+MPD_ENABLE_AUTO_PKG(cddb, CDDB, [libcddb],
+        [libcddb playlist plugin], [libcddb not found])
+if test x$enable_cddb = xyes; then
+        AC_CHECK_HEADERS(cddb/cddb.h)
+fi
+
+
 MPD_ENABLE_AUTO_PKG(mms, MMS, [libmms >= 0.4],
 	[libmms mms:// protocol support], [libmms not found])
 
@@ -1490,6 +1498,8 @@ results(cdio_paranoia, [CDIO_PARANOIA])
 results(curl,[CURL])
 results(smbclient,[SMBCLIENT])
 results(soundcloud,[Soundcloud])
+results(cddb,[CDDB])
+
 printf '\n\t'
 results(mms,[MMS])
 

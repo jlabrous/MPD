@@ -30,6 +30,7 @@
 #include "plugins/FlacPlaylistPlugin.hxx"
 #include "plugins/CuePlaylistPlugin.hxx"
 #include "plugins/EmbeddedCuePlaylistPlugin.hxx"
+#include "plugins/CddbPlaylistPlugin.hxx"
 #include "input/InputStream.hxx"
 #include "util/MimeType.hxx"
 #include "util/UriUtil.hxx"
@@ -60,6 +61,9 @@ const struct playlist_plugin *const playlist_plugins[] = {
 #ifdef ENABLE_CUE
 	&cue_playlist_plugin,
 	&embcue_playlist_plugin,
+#endif
+#ifdef ENABLE_CDDB
+	&cddb_playlist_plugin,
 #endif
 	nullptr
 };

@@ -1250,7 +1250,8 @@ libinput_a_CPPFLAGS = $(AM_CPPFLAGS) \
 	$(NFS_CFLAGS) \
 	$(CDIO_PARANOIA_CFLAGS) \
 	$(FFMPEG_CFLAGS) \
-	$(MMS_CFLAGS)
+	$(MMS_CFLAGS) \
+	$(CDDB_CFLAGS)
 
 INPUT_LIBS = \
 	libinput.a \
@@ -1259,7 +1260,8 @@ INPUT_LIBS = \
 	$(NFS_LIBS) \
 	$(CDIO_PARANOIA_LIBS) \
 	$(FFMPEG_LIBS2) \
-	$(MMS_LIBS)
+	$(MMS_LIBS) \
+	$(CDDB_LIBS)
 
 if ENABLE_ALSA
 libinput_a_SOURCES += \
