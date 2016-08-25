@@ -54,8 +54,15 @@
 #include "plugins/CdioParanoiaInputPlugin.hxx"
 #endif
 
+#ifdef ENABLE_SPOTIFY
+#include "plugins/SpotifyInputPlugin.hxx"
+#endif
+
 const InputPlugin *const input_plugins[] = {
 	&input_plugin_file,
+#ifdef ENABLE_SPOTIFY
+        &input_plugin_spotify,
+#endif
 #ifdef ENABLE_ALSA
 	&input_plugin_alsa,
 #endif

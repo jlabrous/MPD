@@ -694,6 +694,11 @@ dnl ----------------------------------- CURL ----------------------------------
 MPD_ENABLE_AUTO_PKG(curl, CURL, [libcurl >= 7.18],
 	[libcurl HTTP streaming], [libcurl not found])
 
+dnl ----------------------------------- SPOTIFY -------------------------------
+MPD_ENABLE_AUTO_PKG(spotify, SPOTIFY, [libspotify],
+        [Spotify streaming], [libspotify not found])
+
+
 dnl ----------------------------------- smbclient -----------------------------
 MPD_ENABLE_AUTO_PKG_LIB(smbclient, SMBCLIENT, [smbclient >= 0.2],
 	[smbclient], [smbc_init], [-lsmbclient], [],
@@ -1490,6 +1495,8 @@ results(cdio_paranoia, [CDIO_PARANOIA])
 results(curl,[CURL])
 results(smbclient,[SMBCLIENT])
 results(soundcloud,[Soundcloud])
+results(spotify,[SPOTIFY])
+
 printf '\n\t'
 results(mms,[MMS])
 

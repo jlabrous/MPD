@@ -23,11 +23,15 @@
 #include "plugins/simple/SimpleDatabasePlugin.hxx"
 #include "plugins/ProxyDatabasePlugin.hxx"
 #include "plugins/upnp/UpnpDatabasePlugin.hxx"
+#include "plugins/spotify/SpotifyDatabasePlugin.hxx"
 
 #include <string.h>
 
 const DatabasePlugin *const database_plugins[] = {
 	&simple_db_plugin,
+#ifdef ENABLE_SPOTIFY
+        &spotify_db_plugin,
+#endif
 #ifdef ENABLE_LIBMPDCLIENT
 	&proxy_db_plugin,
 #endif

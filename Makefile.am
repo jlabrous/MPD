@@ -1276,6 +1276,15 @@ libinput_a_SOURCES += \
 	src/IcyMetaDataParser.cxx src/IcyMetaDataParser.hxx
 endif
 
+if ENABLE_SPOTIFY
+libinput_a_SOURCES += \
+        src/input/plugins/SpotifyInputPlugin.cxx src/input/plugins/SpotifyInputPlugin.hxx \
+        src/lib/spotify/Spotify.cxx src/playlist/plugins/SpotifyPlaylistPlugin.cxx \
+        src/db/plugins/spotify/SpotifyDatabasePlugin.cxx
+INPUT_LIBS += $(SPOTIFY_LIBS)
+
+endif
+
 if ENABLE_SMBCLIENT
 libinput_a_SOURCES += \
 	$(SMBCLIENT_SOURCES) \
