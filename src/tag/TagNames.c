@@ -45,4 +45,5 @@ const char *const tag_item_names[TAG_NUM_OF_ITEM_TYPES] = {
 	[TAG_MUSICBRAINZ_RELEASETRACKID] = "MUSICBRAINZ_RELEASETRACKID",
 
         [TAG_ALBUM_ART] = "AlbumArt",
+	[TAG_URL] = "URL",
 };
