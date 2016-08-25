@@ -370,9 +370,8 @@ extern Instance *instance;
 Spotify *Spotify::Create()  {
   Spotify *s;
   
-  EventLoop *loop = instance->event_loop;
   puts("input_spotify_init new Spotify");
-  s = new Spotify(*loop);
+  s = new Spotify(instance->event_loop);
   return s;
 }
 

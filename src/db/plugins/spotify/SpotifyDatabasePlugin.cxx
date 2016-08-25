@@ -27,7 +27,7 @@
 #include "db/PlaylistInfo.hxx"
 #include "db/LightSong.hxx"
 #include "db/Stats.hxx"
-#include "config/ConfigData.hxx"
+#include "config/Block.hxx"
 #include "tag/TagBuilder.hxx"
 #include "tag/TagTable.hxx"
 #include "util/Error.hxx"
@@ -53,13 +53,12 @@ public:
 	SpotifyDatabase():Database(spotify_db_plugin) {}
 
 	static Database *Create(EventLoop &loop, DatabaseListener &listener,
-				const config_param &param,
+				const ConfigBlock &param,
 				Error &error);
 
-	virtual bool Open(Error &error) override;
+	virtual void Open() override;
 	virtual void Close() override;
-	virtual const LightSong *GetSong(const char *uri_utf8,
-					 Error &error) const override;
+	virtual const LightSong *GetSong(const char *uri_utf8) const override;
 	void ReturnSong(const LightSong *song) const override;
 
 	virtual bool Visit(const DatabaseSelection &selection,
@@ -69,7 +68,7 @@ public:
 			   Error &error) const override;
 
 	virtual bool VisitUniqueTags(const DatabaseSelection &selection,
-				     TagType tag_type, uint32_t group_mask,
+				     TagType tag_type, tag_mask_t group_mask,
 				     VisitTag visit_tag,
 				     Error &error) const override;
 
@@ -81,7 +80,7 @@ public:
 	}
 
 protected:
-	bool Configure(const config_param &param, Error &error);
+	bool Configure(const ConfigBlock &param, Error &error);
 
 private:
 };
@@ -89,7 +88,7 @@ private:
 Database *
 SpotifyDatabase::Create(gcc_unused EventLoop &loop,
 		     gcc_unused DatabaseListener &listener,
-		     const config_param &param, Error &error)
+		     const ConfigBlock &param, Error &error)
 {
 	SpotifyDatabase *db = new SpotifyDatabase();
 	if (!db->Configure(param, error)) {
@@ -102,17 +101,16 @@ SpotifyDatabase::Create(gcc_unused EventLoop &loop,
 }
 
 inline bool
-SpotifyDatabase::Configure(const config_param &, Error &)
+SpotifyDatabase::Configure(const ConfigBlock &, Error &)
 {
     fprintf(stderr,"JLB:SpotifyDatabase::Configure\n");
 	return true;
 }
 
-bool
-SpotifyDatabase::Open(Error &error)
+void
+SpotifyDatabase::Open()
 {
     fprintf(stderr,"JLB:SpotifyDatabase::Open\n");
-	return true;
 }
 
 void
@@ -133,7 +131,7 @@ SpotifyDatabase::ReturnSong(const LightSong *_song) const
 // Get song info by path. We can receive either the id path, or the titles
 // one
 const LightSong *
-SpotifyDatabase::GetSong(const char *uri, Error &error) const
+SpotifyDatabase::GetSong(const char *uri) const
 {
     fprintf(stderr,"JLB:SpotifyDatabase::GetSong\n");
 	LightSong *song = new LightSong();
